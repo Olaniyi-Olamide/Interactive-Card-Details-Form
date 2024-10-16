@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="images/favicon-32x32"
+      href="/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Interactive card details form</title>
+  </head>
+  <body>
+    <section class="mobile-view md:hidden">
+      <div class="bg-img-mobile relative">
+        <img
+          src="images/bg-card-back.png"
+          alt=""
+          class="top-10 right-2 absolute"
+        />
+        <img
+          src="images/bg-card-front.png"
+          alt=""
+          class="top-40 right-10 absolute"
+        />
+        <div class="absolute top-44 left-10">
+          <svg
+            width="84"
+            height="47"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff" />
+            <path
+              d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"
+              stroke="#fff"
+            />
+          </svg>
+        </div>
+        <div class="absolute text-2xl text-white left-72 top-20" id="card-cvc">000</div>
+        <div class="absolute left-8 top-72">
+          <h4 class="text-white text-2xl" id="card-no">0000 0000 0000 0000</h4>
+        </div>
+        <div class="absolute top-72 left-8 flex flex-row mt-10">
+          <h5 class="text-white text-1xl" id="card-name">Jane Appleseed</h5>
+          <span class="text-white text-1xl ml-28"><span id="card-month">00/</span><span id="card-year">00</span></span></span>
+        </div>
+      </div>
+      <div
+        class=" flex flex-col justify-center items-center mt-28 mx-auto relative"
+        id="registration-form"
+      >
+     <div class="flex flex-col">
+          <label for="name" class="text-black text-1xl font-bold"
+            >CARDHOLDER NAME</label
+          >
+          <input
+            type="text"
+            class="px-3 py-3 border-lightGrayishViolet rounded-md border-2 text-2xl mt-2"
+            placeholder="e.g. Jane Appleseed"
+            id="name-box"
+          />
+           <span class="text-red-600 text-1xl" id="name-err"></span>
+    </div>
+     <div class="flex flex-col mt-10">
+          <label for="number" class="text-black text-1xl font-bold"
+            >CARDHOLDER NUMBER</label
+          >
+          <input
+            type="text"
+            class="px-3 py-3 border-lightGrayishViolet rounded-md border-2 text-2xl mt-2"
+            placeholder="e.g. 1234 5678 9123 0000"
+            id="card-box"
+          />
+            <span class="text-red-600 text-1xl" id="number-err"></span>
+        </div>
+        <div class="flex mt-10 flex-col">
+          <label for="date" class="text-black text-1xl font-bold ml-5"
+            >Exp. Date (MM/YY) <span class="ml-16">cvc</span></label
+          >
+          </div>
+          <div class="flex md:flex-row space-x-5 ml-5 relative">
+            <input
+              type="text"
+              class="px-3 py-3 border-lightGrayishViolet rounded-md border-2 text-1xl mt-3 w-16"
+              placeholder="MM"
+              id="month-box"
+            />
+            <span class="text-red-600 text-1xl absolute top-16 -left-4" id="mm-err"></span>
+            <input
+              type="text"
+              class="px-4 py-3 border-lightGrayishViolet rounded-md border-2 text-1xl mt-3 w-16"
+              placeholder="YY"
+              id="year-box"
+            />
+            <span class="text-red-600 text-1xl absolute top-16 left-16" id="yy-err"></span>
+            <input
+              type="text"
+              class="px-4 py-3 border-lightGrayishViolet rounded-md border-2 text-1xl mt-3 w-32"
+              placeholder="e.g. 123"
+              id="cvc-box"
+            />
+              <span class="text-red-600 text-1xl absolute top-16 left-40" id="cvc-err"></span>
+          </div>
+          <div class="mt-10 items-center flex justify-center">
+            <button
+              class="p-5 bg-veryDarkViolet text-white font-bold rounded-md w-80 mb-10"
+              id="confirm-btn"
+            >
+              Confirm
+            </button>
+          </div>
+          </div>
+              <div class="flex justify-center mx-auto items-center flex-col mt-36 hidden" id="complete-state">
+        <img src="images/icon-complete.svg" alt="">
+        <h3 class="text-4xl text-veryDarkViolet mt-8">THANK YOU!</h3>
+        <p class=" text-lightGrayishViolet mt-3 text-2xl">We've added your card details</p>
+         <button
+              class="p-5 bg-veryDarkViolet text-white font-bold rounded-md w-96 my-8"
+            >
+              Continue
+            </button>
+      </div>
+    </section>
+
+
+    <section class="desktop-view md:flex md:flex-row hidden relative">
+      <div class="bg-img-desktop">
+        <img
+          src="images/bg-card-front.png"
+          alt=""
+          class="absolute lg:left-16 lg:top-28 md:top-8"
+        />
+        <img
+          src="images/bg-card-back.png"
+          alt=""
+          class="absolute lg:left-36 lg:top-96 md:-left-28 md:top-96"
+        />
+        <div class="absolute lg:top-36 lg:left-24 md:top-24 md:left-6">
+          <svg
+            width="84"
+            height="47"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <ellipse cx="23.478" cy="23.5" rx="23.478" ry="23.5" fill="#fff" />
+            <path
+              d="M83.5 23.5c0 5.565-4.507 10.075-10.065 10.075-5.559 0-10.065-4.51-10.065-10.075 0-5.565 4.506-10.075 10.065-10.075 5.558 0 10.065 4.51 10.065 10.075Z"
+              stroke="#fff"
+            />
+          </svg>
+        </div>
+        <div class="absolute lg:left-20 lg:top-64 md:left-8 md:top-40">
+          <h4 class="text-white text-4xl" id="card-no-dsk">
+           0000 0000 0000 0000 
+          </h4>
+        </div>
+        <div class="absolute lg:top-72 lg:left-28 flex flex-row mt-7 md:top-48 md:left-8">
+          <h5 class="text-white text-1xl" id="card-name-dsk">Jane Appleseed</h5>
+          <span class="text-white text-1xl ml-52"><span id="card-month-dsk">00/</span><span id="card-year-dsk">00</span></span>
+        </div>
+      </div>
+      <div
+        class="flex justify-center mx-auto items-center flex-col relative"
+        id="registration-form-dsk"
+      >
+        <div class="flex flex-col">
+          <label for="name" class="text-black text-1xl font-bold"
+            >CARDHOLDER NAME</label
+          >
+          <input
+            type="text"
+            class="px-3 py-3 border-lightGrayishViolet rounded-md border-2 text-2xl mt-2"
+            placeholder="e.g. Jane Appleseed"
+            id="name-box-dsk" required
+          />
+          <span class="text-red-600 text-1xl" id="name-err-dsk"></span>
+        </div>
+        <div class="md:flex md:flex-col mt-10">
+          <label for="number" class="text-black text-1xl font-bold"
+            >CARDHOLDER NUMBER</label
+          >
+          <input
+            type="text"
+            class="px-3 py-3 border-lightGrayishViolet rounded-md border-2 text-2xl mt-2"
+            placeholder="e.g. 1234 5678 9123 0000"
+            id="card-box-dsk"
+          />
+           <span class="text-red-600 text-1xl" id="number-err-dsk"></span>
+        </div>
+        <div class="md:flex mt-10 md:flex-col">
+          <label for="date" class="text-black text-1xl font-bold"
+            >Exp. Date (MM/YY) <span class="ml-16">cvc</span></label
+          >
+          <div class="md:flex md:flex-row md:space-x-5 relative">
+            <input
+              type="text"
+              class="px-3 py-3 border-lightGrayishViolet rounded-md border-2 text-2xl mt-3 w-20"
+              placeholder="MM"
+              id="month-box-dsk"
+            />
+             <span class="text-red-600 text-1xl absolute top-20 -left-4" id="mm-err-dsk"></span>
+            <input
+              type="text"
+              class="px-4 py-3 border-lightGrayishViolet rounded-md border-2 text-2xl mt-3 w-20"
+              placeholder="YY"
+              id="year-box-dsk"
+            />
+             <span class="text-red-600 text-1xl absolute top-20 left-24" id="yy-err-dsk"></span>
+            <input
+              type="text"
+              class="px-4 py-3 border-lightGrayishViolet rounded-md border-2 text-2xl mt-3 w-48"
+              placeholder="e.g. 123"
+              id="cvc-box-dsk"
+            />
+             <span class="text-red-600 text-1xl absolute top-20 left-48" id="cvc-err-dsk"></span>
+          </div>
+          <div class="mt-10">
+            <button
+              class="p-5 bg-veryDarkViolet text-white font-bold rounded-md w-full"
+              id="confirm-btn-dsk"
+            >
+              Confirm
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <div class="fixed lg:left-96 lg:ml-28 lg:bottom-48 md:left-10 md:bottom-96">
+        <span class="lg:text-2xl text-white md:text-3xl" id="card-cvc-dsk">000</span>
+      </div>
+      <div class="flex justify-center mx-auto items-center flex-col relative lg:hidden md:hidden" id="complete-state-dsk">
+        <img src="images/icon-complete.svg" alt="">
+        <h3 class="text-4xl text-veryDarkViolet mt-8">THANK YOU!</h3>
+        <p class=" text-lightGrayishViolet mt-3 text-2xl">We've added your card details</p>
+         <button
+              class="p-5 bg-veryDarkViolet text-white font-bold rounded-md w-96 mt-8"
+            >
+              Continue
+            </button>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
